@@ -5,9 +5,11 @@
   height: 100vh;
   gap: 1rem;
 }
+
 .icon-section {
   color: gray;
 }
+
 /* ✅ 2. Sidebar Styling */
 .sidebar-container {
   background-color: var(--bg-color);
@@ -15,11 +17,13 @@
   height: 100vh;
   overflow-y: auto;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000; /* Ensure sidebar is above content */
 }
 
 .sidebar-container .logo {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .sidebar-container nav h5 {
@@ -35,7 +39,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0.2rem 0.9rem;
+  padding: 0.1rem 1rem;
   text-decoration: none;
   color: var(--text-color);
   border-radius: 5px;
@@ -56,15 +60,169 @@
 .admin-main {
   padding: 2rem;
   overflow-y: auto;
+  z-index: 999; /* Ensure main content stays on top */
 }
 
+/* ✅ Widgets */
+.widgetContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 2rem 2rem 2rem 0;
+}
+
+.widget {
+  min-width: 12rem;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.widgetInfo p {
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+
+.widgetInfo h4 {
+  font-size: 1.5rem;
+}
+
+.widgetInfo span {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.2rem;
+}
+.green {
+  color: green;
+  display: flex;
+  align-items: center;
+}
+
+.red {
+  color: red;
+  display: flex;
+  align-items: center;
+}
+
+.widgetCircle {
+  position: relative;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  flex: none;
+  display: grid;
+  place-items: center;
+  background-color: aqua;
+}
+
+.widgetCircle::before {
+  content: "";
+  position: absolute;
+  height: 4rem;
+  width: 4rem;
+  background-color: white;
+  border-radius: 100%;
+}
+
+.widgetCircle span {
+  position: relative;
+}
+.graphContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem 2rem 0;
+}
+.graphContainer div {
+  background-color: white;
+  border-radius: 10px;
+}
+.revenue-chart {
+  width: 100%;
+  padding: 1rem 3rem;
+}
+.revenue-chart h2 {
+  letter-spacing: 3px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 1rem 0 2rem 0.25rem;
+  text-align: center;
+}
+.dashboard-categories {
+  width: 100%;
+  max-width: 16rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+.dashboard-categories h2 {
+  letter-spacing: 3px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 1.5rem 0 2rem 0rem;
+  text-align: center;
+}
+.dashboard-categories div {
+  overflow-y: auto;
+  padding-left: 0.5rem;
+}
+
+.category-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* flex-direction: row; */
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 1rem;
+}
+.category-item h5 {
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+.category-item div {
+  margin-left: auto;
+  width: 6rem;
+  background-color: rgb(217, 217, 217);
+  border-radius: 20px;
+  height: 0.5rem;
+  flex: none;
+}
+.category-item div div {
+  border-radius: 20%;
+  height: 100%;
+}
+.category-item span {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
 /* ✅ 4. Responsive Design */
+
+/* Tablets (1024px & below) */
 @media (max-width: 1024px) {
   .admin-layout {
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 25% 75%;
+  }
+
+  .widgetContainer {
+    justify-content: center;
+  }
+
+  .widget {
+    width: 45%;
   }
 }
 
+/* Mobile Devices (768px & below) */
 @media (max-width: 768px) {
   .admin-layout {
     grid-template-columns: 1fr;
@@ -75,12 +233,35 @@
     position: fixed;
     width: 100%;
     top: 0;
-    left: 0;
+    left: -100%;
     z-index: 1000;
     box-shadow: none;
+    transition: left 0.3s ease-in-out;
+  }
+
+  .sidebar-container.show {
+    left: 0;
   }
 
   .admin-main {
     margin-top: 60px;
+    padding: 1rem;
+  }
+
+  .widgetContainer {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .widget {
+    width: 90%;
+  }
+}
+
+/* Small Phones (480px & below) */
+@media (max-width: 480px) {
+  .widget {
+    width: 100%;
   }
 }
