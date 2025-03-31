@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import { FaChartBar, FaChartPie, FaChartLine } from "react-icons/fa";
-
+import { FaStopwatch, FaToggleOff } from "react-icons/fa";
+import { RiCoupon3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "../styles/Admin.css";
-interface ChartSidebar {
+interface AppSidebar {
   url: string;
   text: string;
   Icon: React.ComponentType;
 }
-const chartSidebar: ChartSidebar[] = [
-  { url: "/admin/dashboard", text: "Bar", Icon: FaChartBar },
-  { url: "/admin/products", text: "Pie", Icon: FaChartPie },
-  { url: "/admin/customers", text: "Line", Icon: FaChartLine },
+const appSidebar: AppSidebar[] = [
+  { url: "/admin/dashboard", text: "Stopwatch", Icon: FaStopwatch },
+  { url: "/admin/products", text: "Coupon", Icon: RiCoupon3Fill },
+  { url: "/admin/customers", text: "Toss", Icon: FaToggleOff },
 ];
-const ChartSidebar = () => {
+const AppSidebar = () => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
   return (
     <div>
       {" "}
       <nav className="icon-section">
-        <h5>CHARTS</h5>
+        <h5>APPS</h5>
         <ul>
-          {chartSidebar.map(({ url, text, Icon }) => (
+          {appSidebar.map(({ url, text, Icon }) => (
             <li
               key={url}
               className={`menu-item ${activeItem === url ? "active" : ""}`}
@@ -42,4 +42,4 @@ const ChartSidebar = () => {
   );
 };
 
-export default ChartSidebar;
+export default AppSidebar;
