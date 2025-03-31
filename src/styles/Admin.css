@@ -1,0 +1,84 @@
+/* ✅ 1. Admin Layout */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  height: 100vh;
+  gap: 1rem;
+}
+
+/* ✅ 2. Sidebar Styling */
+.sidebar-container {
+  background-color: var(--bg-color);
+  padding: 1rem;
+  height: 100vh;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-container .logo {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar-container nav h5 {
+  margin-bottom: 1rem;
+}
+
+.menu-item {
+  list-style: none;
+  margin-bottom: 0.5rem;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.2rem 0.9rem;
+  text-decoration: none;
+  color: var(--text-color);
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.menu-link:hover,
+.menu-item.active .menu-link {
+  background-color: rgba(0, 0, 200, 0.8);
+  color: white;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+/* ✅ 3. Main Content */
+.admin-main {
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* ✅ 4. Responsive Design */
+@media (max-width: 1024px) {
+  .admin-layout {
+    grid-template-columns: 35% 65%;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-container {
+    height: auto;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: none;
+  }
+
+  .admin-main {
+    margin-top: 60px;
+  }
+}

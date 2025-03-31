@@ -1,0 +1,22 @@
+/* ✅ 1. Root Styling */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #f4f4f4;
+  --text-color: #333;
+  --bg-color: #ffffff;
+  --font-family: "Inter", system-ui, Arial, sans-serif;
+}
+
+/* ✅ 2. Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.5;
+}
