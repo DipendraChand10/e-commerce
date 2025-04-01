@@ -4,6 +4,7 @@ import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import userImage from "../assets/user.webp";
 import { HiTrendingUp ,HiTrendingDown } from "react-icons/hi";
+import data from '../assets/data.json'
 const dashboard = () => {
   return (
     <div className="admin-layout">
@@ -33,7 +34,11 @@ const dashboard = () => {
               Inventory
             </h2>
             <div>
-              <CategoryItem heading="Laptops" value={70} color="hsl(169,100%,50%)"/>
+             {
+              data.categories.map((i)=>(
+                <CategoryItem key={i.heading} heading={i.heading} value={i.value} color={`hsl(${i.value * 4},${i.value}%,50%)`}/>))
+             
+             }
             </div>
           </div>
         </section>
